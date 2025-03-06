@@ -1,0 +1,291 @@
+        :root {
+            --clay-background: #1e1e1e; /* Darker background */
+            --clay-shadow-light: rgba(70, 70, 70, 0.9); /* Darker shadow for dark mode */
+            --clay-shadow-dark: rgba(0, 0, 0, 0.9); /* Black */
+            --accent: #ff6b6b;
+        }
+
+        * {
+            cursor: none;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--clay-background);
+            color: #fff; /* Text color for dark background */
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        .clay-morphism {
+            background: var(--clay-background);
+            border-radius: 50px;
+            box-shadow:
+                20px 20px 40px var(--clay-shadow-dark),
+                -20px -20px 40px var(--clay-shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .clay-morphism:hover {
+            box-shadow:
+                10px 10px 20px var(--clay-shadow-dark),
+                -10px -10px 20px var(--clay-shadow-light);
+        }
+
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+        }
+
+        .cursor-follower {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-menu {
+            transform: translateX(100%);
+            transition: transform 0.6s cubic-bezier(0.7, 0, 0.2, 1);
+        }
+
+        .nav-menu.active {
+            transform: translateX(0);
+        }
+
+        .nav-link {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        .nav-menu.active .nav-link {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-section {
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 1s cubic-bezier(0.7, 0, 0.2, 1);
+        }
+
+        .scroll-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .companies-slider-wrapper {
+            overflow: hidden; /* Hide overflowing content */
+        }
+
+        .companies-slider {
+            display: flex;
+            animation: slide 30s linear infinite; /* Increase duration for smoother animation */
+            white-space: nowrap;
+        }
+
+        .companies-slider span {
+            padding: 10px 30px; /* Increased padding */
+            font-size: 1.2rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.1); /* Subtle divider */
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #FFA500, #FFD700, #00BFFF); /* Orange, Yellow, and Light Blue */
+            -webkit-background-clip: text; /* For Chrome/Safari */
+            background-clip: text;
+            color: transparent;
+        }
+        
+        
+        
+        /* Remove the last border */
+        .companies-slider span:last-child {
+            border-right: none;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .text-content {
+            transition: transform 0.5s ease;
+        }
+
+        .service-item i {
+            transition: none; /*remove transform transition*/
+            color: #D8BFD8;/*Thistle color*/
+        }
+
+        /* New Styles */
+        .midnight-purple {
+            background:rgb(230, 227, 20); /* Midnight Blue */
+            color:rgb(0, 0, 0); /* Thistle (light purple) */
+        }
+
+        .contact-input {
+            padding: 14px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 25px;
+            background-color: #2d2d2d; /*Darker Clay background color*/
+            color: #fff;
+            width: 100%; /* Full width input */
+            font-family: 'Space Grotesk', sans-serif;
+            box-shadow: inset 2px 2px 5px var(--clay-shadow-dark),
+                        inset -2px -2px 5px var(--clay-shadow-light);
+        }
+
+        .contact-input:focus {
+            outline: none;
+            box-shadow: inset 1px 1px 3px var(--clay-shadow-dark),
+                        inset -1px -1px 3px var(--clay-shadow-light);
+        }
+
+        #animated-bg {
+          position: relative;
+          width: 100%;
+          height: auto; /* Adjust as needed, or let content define it */
+          overflow: hidden;
+        }
+
+        #animated-bg canvas {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+        }
+
+        .animated-text {
+          position: relative;
+          z-index: 2;
+          padding: 20px;
+        }
+
+        .image-animation-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow images to wrap to the next line */
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* Space between images */
+            margin-top: 20px;
+        }
+
+        .image-animation-container img {
+            width: 150px; /* Adjust as needed */
+            height: 150px; /* Adjust as needed */
+            object-fit: cover;
+            border-radius: 10px;
+            opacity: 0; /* Start invisible */
+            transform: scale(0.5); /* Start smaller */
+        }
+        .image-animation-container img.visible {
+            opacity: 1;
+            transform: scale(1);
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out; /*Smooth transition*/
+        }
+        .heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+            width: 100%;
+            position: relative;
+            top: -50px; /* Moves it 20px up */
+        }
+        
+        
+        /* Heading (Left Side) */
+        .heading h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color:rgb(255, 255, 255);
+            margin: 12px;
+            flex: 1;
+            text-align: left;
+            white-space: nowrap; /* Prevents text from wrapping */
+        }
+        
+        /* Paragraph (Right Side) */
+        .heading p {
+            font-size: 10px;
+            color: #fff;
+            margin: 0;
+            flex: 1;
+            text-align: right;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .heading {
+                flex-direction: column; /* Stack h1 & p vertically on small screens */
+                text-align: center;
+            }
+        
+            .heading h1, 
+            .heading p {
+                text-align: center;
+                padding: 10px 0;
+            }
+        }
+
+        /* Styles for the "Why Choose Us" section */
+        .why-choose-us {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .why-choose-us img {
+            width: 40%; /* Adjust as needed */
+            border-radius: 10px;
+        }
+
+        .why-choose-us .content {
+            width: 55%; /* Adjust as needed */
+        }
+
+        /* Adjust for smaller screens */
+        @media (max-width: 768px) {
+            .why-choose-us {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .why-choose-us img {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+
+            .why-choose-us .content {
+                width: 100%;
+            }
+        }
